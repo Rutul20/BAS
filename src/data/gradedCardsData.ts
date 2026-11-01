@@ -25,6 +25,12 @@ export interface GradedCardItem {
   description: string
 }
 
+const getCardAsset = (filename: string): string => {
+  const base: string = import.meta.env.BASE_URL || '/'
+  const cleanBase: string = base.endsWith('/') ? base : `${base}/`
+  return `${cleanBase}cards/${filename}`
+}
+
 export const featuredGradedCards: GradedCardItem[] = [
   {
     id: 'charizard',
@@ -45,7 +51,7 @@ export const featuredGradedCards: GradedCardItem[] = [
       edges: '9.5',
       surface: '10'
     },
-    imageSrc: '/cards/charizard.png',
+    imageSrc: getCardAsset('charizard.png'),
     accentColor: '#FFF83F',
     rarity: 'Ultra Rare Holo',
     description: 'Flawless 50/50 centering, razor-sharp factory-cut corners, pristine foil gloss, and zero whitening.'
@@ -69,7 +75,7 @@ export const featuredGradedCards: GradedCardItem[] = [
       edges: '10',
       surface: '10'
     },
-    imageSrc: '/cards/jordan.png',
+    imageSrc: getCardAsset('jordan.png'),
     accentColor: '#2391FF',
     rarity: 'Hall of Fame Rookie',
     description: 'Legendary 1986 Fleer rookie card with immaculate red and blue borders, sharp corners, and deep ink saturation.'
@@ -93,7 +99,7 @@ export const featuredGradedCards: GradedCardItem[] = [
       edges: '10',
       surface: '9.5'
     },
-    imageSrc: '/cards/lotus.png',
+    imageSrc: getCardAsset('lotus.png'),
     accentColor: '#FFF83F',
     rarity: 'Alpha Artifact Mythic',
     description: 'The pinnacle of trading card game lore. Sub-pixel verified borders, rich dark ink pigmentation, and immaculate surface.'
@@ -117,7 +123,7 @@ export const featuredGradedCards: GradedCardItem[] = [
       edges: '10',
       surface: '9.5'
     },
-    imageSrc: '/cards/luffy.png',
+    imageSrc: getCardAsset('luffy.png'),
     accentColor: '#F70063',
     rarity: 'Super Parallel Manga Rare',
     description: 'Hyper-rare modern Japanese card featuring serialized laser-engraved foil background and immaculate surface clarity.'

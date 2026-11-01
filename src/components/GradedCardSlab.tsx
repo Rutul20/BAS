@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Shield } from 'lucide-react'
 import { type GradedCardItem } from '../data/gradedCardsData'
 
@@ -9,6 +9,26 @@ interface GradedCardSlabProps {
 
 export default function GradedCardSlab({ card, className = '' }: GradedCardSlabProps): JSX.Element {
   const [imageError, setImageError] = useState<boolean>(false)
+
+  // Reset error state if the card or imageSrc changes
+  useEffect((): void => {
+    setImageError(false)
+  }, [card.id, card.imageSrc])
+
+  // Resolve image URL with Vite base URL so it loads properly on GitHub Pages and local dev
+  const resolveImageUrl = (src: string): string => {
+    if (!src) return ''
+    if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+      return src
+    }
+    const baseUrl: string = import.meta.env.BASE_URL || '/'
+    const cleanBase: string = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`
+    const cleanSrc: string = src.startsWith('/') ? src.slice(1) : src
+    if (cleanBase !== '/' && cleanSrc.startsWith(cleanBase.slice(1))) {
+      return `/${cleanSrc}`
+    }
+    return `${cleanBase}${cleanSrc}`
+  }
 
   // SVG Fallback illustration when image is loading or unavailable
   const renderFallbackArt = (id: string): JSX.Element => {
@@ -175,7 +195,7 @@ export default function GradedCardSlab({ card, className = '' }: GradedCardSlabP
           <div className="w-full h-full overflow-hidden shadow-md bg-white relative">
             {!imageError ? (
               <img
-                src={card.imageSrc}
+                src={resolveImageUrl(card.imageSrc)}
                 alt={card.cardTitle}
                 onError={(): void => setImageError(true)}
                 className="w-full h-full object-cover object-center"
