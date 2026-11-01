@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles - White theme */
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased selection:bg-[#2391FF] selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - Clean solid blue */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2391FF;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #177de6;
+}
+
+/* Solid Grade Badge Styles - Zero Gradients */
+.grade-badge-10 {
+  @apply bg-[#FFF83F] text-slate-950 font-black border-2 border-slate-950;
+}
+
+.grade-badge-9 {
+  @apply bg-[#2391FF] text-white font-black;
+}
+
+.grade-badge-8 {
+  @apply bg-[#FFF83F] text-slate-950 font-black border border-slate-300;
+}
+
+.grade-badge-7 {
+  @apply bg-[#2391FF] text-white font-bold;
+}
+
+/* Card styles - White theme */
+.premium-card {
+  @apply bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-[#2391FF] transition-all duration-200;
+}
