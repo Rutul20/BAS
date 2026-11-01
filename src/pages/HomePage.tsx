@@ -161,7 +161,7 @@ export default function HomePage(): JSX.Element {
   const showcaseCards: GradedCardItem[] = featuredGradedCards.slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#2391FF]/20 selection:text-[#2391FF]">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-grow">

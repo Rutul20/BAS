@@ -2,7 +2,7 @@ import { Navbar, Footer, SubmissionForm, BackToTop } from '../components'
 
 export default function SubmitYourCardPage(): JSX.Element {
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#2391FF]/20 selection:text-[#2391FF]">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-grow pt-24 sm:pt-32 pb-20">

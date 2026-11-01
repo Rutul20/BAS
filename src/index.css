@@ -7,7 +7,7 @@
 /* Base styles - White theme */
 @layer base {
   body {
-    @apply bg-white text-slate-900 antialiased selection:bg-[#2391FF] selection:text-white;
+    @apply bg-white text-slate-900 antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
